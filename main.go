@@ -43,8 +43,8 @@ func secureRandomString(n int, charset string) (string, error) {
 }
 
 func generatePassword(length int, useLetters, useNumbers, useSpecials bool) (string, error) {
-	if length < 8 || length > 128 {
-		return "", fmt.Errorf("password length must be between 8 and 128")
+	if length < 8 || length > 20 {
+		return "", fmt.Errorf("password length must be between 8 and 20")
 	}
 
 	if !useLetters && !useNumbers && !useSpecials {
