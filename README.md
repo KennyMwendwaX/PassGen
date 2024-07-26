@@ -16,7 +16,7 @@ A simple, secure command-line password generator written in Go using the Cobra l
 2. Clone this repository:
 
 ```bash
-git clone https://github.com/yourusername/go-password-generator.git
+git clone https://github.com/KennyMwendwaX/go-password-generator.git
 ```
 
 3. Navigate to the project directory:
