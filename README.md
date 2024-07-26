@@ -36,7 +36,7 @@ cd go-password-generator
 After building the project, you can run the password generator using:
 
 ```bash
-./password [flags]
+./go-password-generator [flags]
 ```
 
 ### Flags
@@ -52,19 +52,19 @@ After building the project, you can run the password generator using:
 1. Generate a password with default settings (16 characters, letters and numbers):
 
 ```bash
-./password
+./go-password-generator
 ```
 
 2. Generate a 20-character password including special characters:
 
 ```bash
-./password -l 20 -s
+./go-password-generator -l 20 -s
 ```
 
 3. Generate a password and display its entropy:
 
 ```bash
-./password -v
+./go-password-generator -v
 ```
 
 ## Security
