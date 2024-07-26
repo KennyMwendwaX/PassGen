@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/atotto/clipboard"
 	"github.com/spf13/cobra"
 )
 
@@ -20,7 +19,6 @@ var (
 	useLetters  bool
 	useNumbers  bool
 	useSpecials bool
-	copyToClip  bool
 	verbose     bool
 )
 
@@ -29,7 +27,6 @@ func init() {
 	rootCmd.Flags().BoolVarP(&useLetters, "letters", "t", true, "Include letters")
 	rootCmd.Flags().BoolVarP(&useNumbers, "numbers", "n", true, "Include numbers")
 	rootCmd.Flags().BoolVarP(&useSpecials, "specials", "s", false, "Include special characters")
-	rootCmd.Flags().BoolVarP(&copyToClip, "copy", "c", false, "Copy to clipboard")
 	rootCmd.Flags().BoolVarP(&verbose, "verbose", "v", false, "Verbose output")
 }
 
@@ -107,15 +104,6 @@ var rootCmd = &cobra.Command{
 		if verbose {
 			entropy := calculateEntropy(password)
 			fmt.Printf("Password entropy: %.2f bits\n", entropy)
-		}
-
-		if copyToClip {
-			err := clipboard.WriteAll(password)
-			if err != nil {
-				fmt.Println("Error copying to clipboard:", err)
-			} else {
-				fmt.Println("Password copied to clipboard.")
-			}
 		}
 	},
 }
