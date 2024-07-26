@@ -14,11 +14,23 @@ const (
 	specialBytes = "!@#$%^&*()-_=+[]{}|;:,.<>?/"
 )
 
-var rng *rand.Rand
+var (
+	rng         *rand.Rand
+	length      int
+	useLetters  bool
+	useNumbers  bool
+	useSpecials bool
+)
 
 func init() {
 	// Create a new random generator with a random seed
 	rng = rand.New(rand.NewSource(time.Now().UnixNano()))
+
+	// Initialize the root command
+	rootCmd.Flags().IntVarP(&length, "length", "l", 16, "Length of the password")
+	rootCmd.Flags().BoolVarP(&useLetters, "letters", "t", true, "Include letters")
+	rootCmd.Flags().BoolVarP(&useNumbers, "numbers", "n", true, "Include numbers")
+	rootCmd.Flags().BoolVarP(&useSpecials, "specials", "s", false, "Include special characters")
 }
 
 func randString(n int, charset string) string {
@@ -43,25 +55,17 @@ func generatePassword(length int, useLetters, useNumbers, useSpecials bool) stri
 	return randString(length, charset)
 }
 
+var rootCmd = &cobra.Command{
+	Use:   "password",
+	Short: "PasswordGen is a simple password generator",
+	Long:  `A simple command line tool to generate secure passwords.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		password := generatePassword(length, useLetters, useNumbers, useSpecials)
+		fmt.Printf("Generated Password: %s\n", password)
+	},
+}
+
 func main() {
-	var length int
-	var useLetters, useNumbers, useSpecials bool
-
-	var rootCmd = &cobra.Command{
-		Use:   "password",
-		Short: "PasswordGen is a simple password generator",
-		Long:  `A simple command line tool to generate secure passwords.`,
-		Run: func(cmd *cobra.Command, args []string) {
-			password := generatePassword(length, useLetters, useNumbers, useSpecials)
-			fmt.Printf("Generated Password: %s\n", password)
-		},
-	}
-
-	rootCmd.Flags().IntVarP(&length, "length", "l", 16, "Length of the password")
-	rootCmd.Flags().BoolVarP(&useLetters, "letters", "t", true, "Include letters")
-	rootCmd.Flags().BoolVarP(&useNumbers, "numbers", "n", true, "Include numbers")
-	rootCmd.Flags().BoolVarP(&useSpecials, "specials", "s", true, "Include special characters")
-
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		return
