@@ -1,4 +1,4 @@
-module github.com/KennyMwendwaX/go-password-generator
+module github.com/KennyMwendwaX/PassGen
 
 go 1.22.5
 

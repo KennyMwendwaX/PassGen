@@ -1,4 +1,4 @@
-# Go Password Generator
+# PassGen
 
 A simple, secure command-line password generator written in Go using the Cobra library.
 
@@ -16,19 +16,19 @@ A simple, secure command-line password generator written in Go using the Cobra l
 2. Clone this repository:
 
 ```bash
-git clone https://github.com/KennyMwendwaX/go-password-generator.git
+git clone https://github.com/KennyMwendwaX/PassGen.git
 ```
 
 3. Navigate to the project directory:
 
 ```bash
-cd go-password-generator
+cd PassGen
 ```
 
 4. Build the project:
 
 ```bash
- cd go-password-generator
+ cd PassGen
 ```
 
 ## Usage
@@ -36,7 +36,7 @@ cd go-password-generator
 After building the project, you can run the password generator using:
 
 ```bash
-./go-password-generator [flags]
+./PassGen [flags]
 ```
 
 ### Flags
@@ -52,19 +52,19 @@ After building the project, you can run the password generator using:
 1. Generate a password with default settings (16 characters, letters and numbers):
 
 ```bash
-./go-password-generator
+./PassGen
 ```
 
 2. Generate a 20-character password including special characters:
 
 ```bash
-./go-password-generator -l 20 -s
+./PassGen -l 20 -s
 ```
 
 3. Generate a password and display its entropy:
 
 ```bash
-./go-password-generator -v
+./PassGen -v
 ```
 
 ## Security
