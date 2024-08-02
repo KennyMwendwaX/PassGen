@@ -89,8 +89,8 @@ func calculateEntropy(password string) float64 {
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "password",
-	Short: "PasswordGen is a simple password generator",
+	Use:   "PassGen",
+	Short: "PassGen is a simple password generator",
 	Long:  `A simple command line tool to generate secure passwords.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		password, err := generatePassword(length, useLetters, useNumbers, useSpecials)
